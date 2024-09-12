@@ -1,18 +1,28 @@
 import { useState } from "react";
 import TextInputForm from "./TextInputForm";
+import { useNavigate } from "react-router-dom";
 
 function TextInputFormContainer(){
 
-    const [inputType, setInputType] = useState("password");
+    const [inputType, setInputType] = useState("password"); // state variable
+    const [value, setValue] = useState("");
+
+    const navigate = useNavigate(); // useNavigate is a hook that returns a navigate function
 
     function handleFormSubmit(event){
         event.preventDefault("submit");
-        console.log("form submitted")
+        console.log("form submitted");
+        if(value){
+            setTimeout(() => {
+                navigate("/play");
+            }, 5000);
+        }
     }
 
     function handleTextInputChange(event){
         console.log("text input change")
         console.log(event.target.value)
+        setValue(event.target.value);
     }
 
     function handleShowHideClick(){
