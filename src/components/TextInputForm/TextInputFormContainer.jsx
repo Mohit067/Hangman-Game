@@ -13,9 +13,10 @@ function TextInputFormContainer(){
         event.preventDefault("submit");
         console.log("form submitted");
         if(value){
-            setTimeout(() => {
-                navigate("/play");
-            }, 5000);
+            // setTimeout(() => {
+            //     navigate(`/play/` , {state : {wordSelected : value}}); // state object mai kuch bhi de skte hai yaha hmne ek object diya hai ham string number kuch bhi de skte h
+            // }, 1000);
+            navigate(`/play/` , {state : {wordSelected : value}});
         }
     }
 
