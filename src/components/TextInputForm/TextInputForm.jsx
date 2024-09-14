@@ -27,6 +27,16 @@ function TextInputForm({ inputType, handleFormSubmit, handleTextInputChange, han
                     text="submit"
                 />
             </div>
+
+            <div>
+                <Button 
+                    type="Hint"
+                    styleType="primary"
+                    text="Hint"
+                />
+            </div>
+
+
         </form>
     );
 }

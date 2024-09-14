@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextInputForm from "./TextInputForm";
 import { useNavigate } from "react-router-dom";
 
@@ -34,6 +34,21 @@ function TextInputFormContainer(){
             setInputType("password")
         }
     }
+
+
+    useEffect(() => {
+        console.log("call every time");
+    }, []);
+
+
+    useEffect(() => {
+        console.log("call when input type update");
+    }, [inputType]);
+
+    useEffect(() => {
+        console.log("change when value is change");
+    }, [value]);
+
     return(
         <TextInputForm
             inputType={inputType}
