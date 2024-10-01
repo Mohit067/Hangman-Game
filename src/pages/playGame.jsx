@@ -1,8 +1,9 @@
-import { Link , useSearchParams , useParams , useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Masktexed from "../components/MaskTexed/MaskTexed";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Hangman from "../components/Hangman/Hangman";
+import { wordContext } from "../context/wordContext";
 function PlayGame(){
     
     // const [searchParams] = useSearchParams();
@@ -10,7 +11,9 @@ function PlayGame(){
 
     // const {text} = useParams()
 
-    const { state } = useLocation();
+    // const { state } = useLocation();
+
+    const { word } = useContext(wordContext);
 
     const [ guessedLetters , setguessedLetters] = useState([]);
 
@@ -18,7 +21,7 @@ function PlayGame(){
     
     function handleLetterClick(letter){
 
-        if(state?.wordSelected?.toUpperCase().includes(letter)){
+        if(word?.toUpperCase().includes(letter)){
             console.log('correct');
         }
         else{
@@ -33,13 +36,18 @@ function PlayGame(){
 
     return (
         <>
-            <h1>Play Game  </h1>
+            <h1> Play Game  </h1>  
 
-            {state?.wordSelected && (
+            {/* {wordList.map((wordObjec) => (
+                <li key={wordObjec.id}>{wordObjec.wordValue}</li>
+            ))} */}
+
+
+            {word && (
                 <>
-                    <Masktexed text={state.wordSelected}  guessedLetters={guessedLetters}></Masktexed>
+                    <Masktexed text={word}  guessedLetters={guessedLetters}></Masktexed>
                     <div>
-                        <LetterButtons text={state.wordSelected} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
+                        <LetterButtons text={word} guessedLetters={guessedLetters} onLetterClick={handleLetterClick} />
                     </div>
 
                     <div>
