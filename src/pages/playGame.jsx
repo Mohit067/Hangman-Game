@@ -4,6 +4,7 @@ import LetterButtons from "../components/LetterButtons/LetterButtons";
 import { useContext, useState } from "react";
 import Hangman from "../components/Hangman/Hangman";
 import { wordContext } from "../context/wordContext";
+import useWordStore from "../stores/wordStore";
 function PlayGame(){
     
     // const [searchParams] = useSearchParams();
@@ -13,7 +14,9 @@ function PlayGame(){
 
     // const { state } = useLocation();
 
-    const { word } = useContext(wordContext);
+    // const { word } = useContext(wordContext);
+
+    const { wordList , word} = useWordStore();
 
     const [ guessedLetters , setguessedLetters] = useState([]);
 
@@ -41,6 +44,10 @@ function PlayGame(){
             {/* {wordList.map((wordObjec) => (
                 <li key={wordObjec.id}>{wordObjec.wordValue}</li>
             ))} */}
+
+            {wordList.map((word) => {
+                return <li key={word.id}>{word.wordValue}</li>
+            })}
 
 
             {word && (

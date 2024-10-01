@@ -3,9 +3,12 @@ import Button from "../components/Button/Button";
 import TextInputFormContainer from "../components/TextInputForm/TextInputFormContainer";
 import { useContext, useEffect } from "react";
 import { wordContext } from "../context/wordContext";
+import useWordStore from "../stores/wordStore";
 function Home(){
 
-    const { setWordList , setWord} =  useContext(wordContext);
+    // const { setWord} =  useContext(wordContext);
+
+    const {setWordList , setWord} = useWordStore();//coming froom the store
 
     async function fetchWord(){
         const response = await fetch("http://localhost:3000/words");//custom object
